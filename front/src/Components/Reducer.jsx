@@ -1,6 +1,5 @@
 function Reducer(state, action) {
 	switch (action.type) {
-		//Falta ensayar
 		case 'update-tasklist':
 			const taskUpdateList = state.task;
 			taskUpdateList.taskList = action.taskList;
@@ -17,7 +16,6 @@ function Reducer(state, action) {
 			});
 			taskDeleteItem.taskList = taskListUpdate;
 			return { ...state, task: taskDeleteItem }
-
 		case 'update-item':
 			const todoUpdateItem = state.todo;
 			const listUpdateEdit = todoUpdateItem.todoList.map((item) => {

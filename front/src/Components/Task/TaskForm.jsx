@@ -1,6 +1,6 @@
 import React, { useRef, useState, useContext } from 'react';
-import HOST_API from '../common/Connection';
-import Store from '../common/Store';
+import HOST_API from '../Connection';
+import Store from '../Store';
 
 const TaskForm = () => {
 	const formRef = useRef(null);
@@ -8,7 +8,7 @@ const TaskForm = () => {
 	const item = task.item;
 	const [state, setState] = useState(item);
 
-	const onAdd = (event) => {
+    const onAdd = (event) => {
 		event.preventDefault();
 
 		const request = {
@@ -33,16 +33,20 @@ const TaskForm = () => {
 					formRef.current.reset();
 				});
 		} else {
-			document.querySelector(".alert").innerHTML = "Solo puede utilizar caracteres Alfanuméricos";
+			document.querySelector(".alert").innerHTML = "Solo utilice caracteres Alfanuméricos";
 		}
 	}
 
-	return <form className="formList" ref={formRef}>
-		<input type="text" name="name" className="taskForm" placeholder="Ingrese el nombre de la lista" defaultValue={item.name} onChange={(event) => {
-			setState({ ...state, name: event.target.value })
-		}} />
-		<button onClick={onAdd} disabled={!state.name}>Nueva Lista</button>
-	</form>
+	return <div className="pt-10">
+		<h3>To-Do List</h3>
+		<form className="formList" ref={formRef}>
+			<input className="form-control" type="text" name="name" placeholder="Ingrese el nombre de la lista" defaultValue={item.name} onChange={(event) => {
+				setState({ ...state, name: event.target.value })
+			}} />
+			<button id = "eliminar" className="btn btn-primary" onClick={onAdd} disabled={!state.name}>Nueva Lista</button>
+			<div className="alert"></div>
+		</form>
+	</div>
 	;
 }
 
