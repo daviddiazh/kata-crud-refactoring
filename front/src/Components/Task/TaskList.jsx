@@ -3,6 +3,7 @@ import Store from '../Store';
 import Form from "../Todo/Form";
 import HOST_API from '../Connection';
 import List from "../Todo/List";
+import '../../index.css';
 
 const TaskList = () => {
 	const { dispatch, state: { task, todo } } = useContext(Store);
@@ -34,12 +35,12 @@ const TaskList = () => {
 		})
 	};
 
-	return <div class="row text-center d-flex justify-content-center">
+	return <div>
 		{currentList.map((item) => {
-			return <div className="col col-sm-12  col-md-8  col-sm-12 padre" id="card" key={item.id}>
+			return <div className="card" id="card" key={item.id}>
 				<div>
 					<h2>{item.name}</h2>
-					<button className="btn btn-danger hijo" onClick={() => onDeleteTask(item.id)}>Eliminar</button>
+					<button className="btn-eliminar" onClick={() => onDeleteTask(item.id)}>Eliminar</button>
 					<Form TaskListId={item.id} />
 					<List TaskListId={item.id} />
 				</div>

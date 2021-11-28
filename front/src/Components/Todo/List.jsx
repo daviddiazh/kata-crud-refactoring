@@ -1,6 +1,8 @@
 import React, { useContext, useEffect } from 'react';
 import Store from '../Store';
 import HOST_API from '../Connection';
+import '../../index.css';
+
 
 const List = (TaskListId) => {
 	const { dispatch, state: { todo } } = useContext(Store);
@@ -68,8 +70,8 @@ const List = (TaskListId) => {
 						<td>
 						<input type="checkbox"  defaultChecked={item.completed} onChange={(event) => onEditComplete(event, item)} className="CheckComplete"/>
 						</td>
-						<td><button className="btn btn-info" onClick={() => onEdit(item)}>Editar</button></td>
-						<td><button className="btn btn-danger" onClick={() => onDelete(item.id)}>Eliminar</button></td>
+						<td><button className="btn-editar" onClick={() => onEdit(item)}>Editar</button></td>
+						<td><button className="btn-eliminar" onClick={() => onDelete(item.id)}>Eliminar</button></td>
 					</tr>
 				})}
 			</tbody>

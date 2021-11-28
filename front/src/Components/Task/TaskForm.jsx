@@ -1,6 +1,7 @@
 import React, { useRef, useState, useContext } from 'react';
 import HOST_API from '../Connection';
 import Store from '../Store';
+import '../../index.css';
 
 const TaskForm = () => {
 	const formRef = useRef(null);
@@ -37,13 +38,13 @@ const TaskForm = () => {
 		}
 	}
 
-	return <div className="pt-10">
-		<h3>To-Do List</h3>
-		<form className="formList" ref={formRef}>
+	return <div className="form">
+		<h3>To-Do List <span>David Diaz Herrera</span></h3>
+		<form className="card" ref={formRef}>
 			<input className="form-control" type="text" name="name" placeholder="Ingrese el nombre de la lista" defaultValue={item.name} onChange={(event) => {
 				setState({ ...state, name: event.target.value })
 			}} />
-			<button id = "eliminar" className="btn btn-primary" onClick={onAdd} disabled={!state.name}>Nueva Lista</button>
+			<button id = "eliminar" className="btn-agregar" onClick={onAdd} disabled={!state.name}>Nueva Lista</button>
 			<div className="alert"></div>
 		</form>
 	</div>

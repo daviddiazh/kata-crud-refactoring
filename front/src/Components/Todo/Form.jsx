@@ -1,6 +1,7 @@
 import React, { useRef, useState, useContext } from "react";
 import Store from "../Store";
 import HOST_API from "../Connection";
+import '../../index.css';
 
 const Form = (TaskListId) => {
   const formRef = useRef(null);
@@ -74,7 +75,7 @@ const Form = (TaskListId) => {
   };
 
   return (
-    <form ref={formRef} className="bar input-group mb-3">
+    <form ref={formRef}>
       <input
         className="form-control"
         type="text"
@@ -85,12 +86,12 @@ const Form = (TaskListId) => {
         }}
       />
       {item.id && (
-        <button className="btn btn-primary ml-3" onClick={onEdit} disabled={!state.name}>
+        <button className="btn-actualizar" onClick={onEdit} disabled={!state.name}>
           Actualizar
         </button>
       )}
       {!item.id && (
-        <button className="btn btn-primary ml3" onClick={onAdd} disabled={!state.name}>
+        <button className="btn-agregar" onClick={onAdd} disabled={!state.name}>
           Agregar
         </button>
       )}
